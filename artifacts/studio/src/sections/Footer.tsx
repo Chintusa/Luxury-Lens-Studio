@@ -1,58 +1,113 @@
-import { Facebook, Instagram, Youtube, Twitter } from "lucide-react";
+import { Instagram, Facebook, Youtube } from "lucide-react";
+import { motion } from "framer-motion";
+
+const explore = [
+  { label: "Portfolio", href: "#work" },
+  { label: "Cinematography", href: "#films" },
+  { label: "Services", href: "#services" },
+  { label: "Destinations", href: "#destinations" },
+  { label: "The Studio", href: "#about" },
+];
+
+const socials = [
+  { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+  { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
+  { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
+];
 
 export default function Footer() {
   return (
-    <footer className="bg-dark text-white pt-24 pb-12 border-t border-white/10">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          <div className="md:col-span-2">
-            <h2 className="text-3xl font-serif mb-6">LUMIÈRE STUDIO</h2>
-            <p className="text-white/50 font-light max-w-sm mb-8">
-              Documenting life's most beautiful moments with a cinematic and editorial eye. Available worldwide.
+    <footer className="bg-dark pt-28 pb-12">
+      <div className="max-w-[1440px] mx-auto px-8 md:px-16">
+
+        {/* Top row */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 pb-20 border-b border-white/8">
+
+          {/* Brand */}
+          <div className="md:col-span-5">
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="font-serif text-white text-4xl md:text-5xl mb-6 leading-tight"
+            >
+              Lumière<br /><em className="text-gold">Studio</em>
+            </motion.h2>
+            <p className="text-white/30 font-light text-sm leading-[2] max-w-xs mb-10">
+              Luxury photography & cinematography for discerning clients — available worldwide.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-gold hover:border-gold hover:text-dark transition-all duration-300">
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-gold hover:border-gold hover:text-dark transition-all duration-300">
-                <Facebook className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-gold hover:border-gold hover:text-dark transition-all duration-300">
-                <Youtube className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-gold hover:border-gold hover:text-dark transition-all duration-300">
-                <Twitter className="w-4 h-4" />
-              </a>
+              {socials.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="w-10 h-10 border border-white/12 flex items-center justify-center text-white/40 hover:border-gold hover:text-gold transition-all duration-300"
+                >
+                  <s.icon className="w-4 h-4" />
+                </a>
+              ))}
             </div>
           </div>
-          
-          <div>
-            <h3 className="uppercase tracking-widest text-sm text-gold mb-6">Explore</h3>
-            <ul className="space-y-3 text-white/70 font-light">
-              <li><a href="#work" className="hover:text-gold transition-colors">Portfolio</a></li>
-              <li><a href="#films" className="hover:text-gold transition-colors">Cinematography</a></li>
-              <li><a href="#services" className="hover:text-gold transition-colors">Services</a></li>
-              <li><a href="#about" className="hover:text-gold transition-colors">The Studio</a></li>
+
+          {/* Explore */}
+          <div className="md:col-span-3">
+            <h3 className="text-[10px] uppercase tracking-[0.35em] text-gold mb-8 font-light">Explore</h3>
+            <ul className="space-y-4">
+              {explore.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-white/35 hover:text-white text-sm font-light transition-colors duration-300"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
-          
-          <div>
-            <h3 className="uppercase tracking-widest text-sm text-gold mb-6">Contact</h3>
-            <ul className="space-y-3 text-white/70 font-light">
-              <li><a href="#contact" className="hover:text-gold transition-colors">Inquire</a></li>
-              <li><a href="mailto:hello@lumierestudio.com" className="hover:text-gold transition-colors">hello@lumierestudio.com</a></li>
-              <li className="pt-4">Paris • Dubai • Como • New York</li>
+
+          {/* Contact */}
+          <div className="md:col-span-4">
+            <h3 className="text-[10px] uppercase tracking-[0.35em] text-gold mb-8 font-light">Contact</h3>
+            <ul className="space-y-4 text-white/35 text-sm font-light">
+              <li>
+                <a href="#contact" className="hover:text-white transition-colors duration-300">
+                  Begin an Inquiry
+                </a>
+              </li>
+              <li>
+                <a href="mailto:hello@lumierestudio.com" className="hover:text-white transition-colors duration-300">
+                  hello@lumierestudio.com
+                </a>
+              </li>
+              <li>
+                <a href="tel:+12345678900" className="hover:text-white transition-colors duration-300">
+                  +1 (234) 567-8900
+                </a>
+              </li>
+              <li className="pt-2 text-white/20 text-[11px] tracking-wider">
+                Paris · Dubai · Mumbai · New York
+              </li>
             </ul>
           </div>
+
         </div>
-        
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40 uppercase tracking-widest">
-          <p>© 2025 Lumière Studio. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+
+        {/* Bottom row */}
+        <div className="pt-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <p className="text-white/20 text-[10px] uppercase tracking-[0.25em]">
+            © 2025 Lumière Studio. All rights reserved.
+          </p>
+          <div className="flex gap-8 text-white/20 text-[10px] uppercase tracking-[0.2em]">
+            <a href="#" className="hover:text-white/40 transition-colors duration-300">Privacy Policy</a>
+            <a href="#" className="hover:text-white/40 transition-colors duration-300">Terms</a>
           </div>
         </div>
+
       </div>
     </footer>
   );

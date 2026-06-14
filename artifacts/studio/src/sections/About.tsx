@@ -1,65 +1,145 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const stats = [
-  { value: "500+", label: "Events" },
-  { value: "8+", label: "Years Experience" },
-  { value: "12", label: "Countries Covered" },
+  { value: "500+", label: "Events Covered" },
+  { value: "8+", label: "Years of Excellence" },
+  { value: "12", label: "Countries" },
   { value: "50+", label: "Destination Weddings" },
 ];
 
 export default function About() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const imgY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
+
   return (
-    <section id="about" className="py-24 bg-white">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+    <section id="about" className="bg-white overflow-hidden">
+
+      {/* Top full-bleed image strip */}
+      <div ref={ref} className="relative w-full h-[70vh] md:h-[85vh] overflow-hidden">
+        <motion.div className="absolute inset-0" style={{ y: imgY }}>
+          <img
+            src="https://images.unsplash.com/photo-1554048612-b6a92233f208?auto=format&fit=crop&q=90&w=2400&h=1600"
+            alt="Behind the scenes at Lumière Studio"
+            className="w-full h-[110%] object-cover object-center"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src =
+                "https://images.unsplash.com/photo-1519225421-a9572-3a74?auto=format&fit=crop&q=90&w=2400";
+            }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to bottom, rgba(10,10,10,0.1) 0%, rgba(10,10,10,0.05) 60%, rgba(10,10,10,0.35) 100%)",
+            }}
+          />
+        </motion.div>
+
+        {/* Overlay label */}
+        <div className="absolute bottom-10 left-8 md:left-16">
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:w-1/2 aspect-[4/5] relative"
+            className="text-white/50 uppercase tracking-[0.35em] text-[10px] font-light mb-3"
           >
-            <img 
-              src="https://images.unsplash.com/photo-1554048612-b6a92233f208?auto=format&fit=crop&q=80&w=1000" 
-              alt="Studio behind the scenes"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-cream -z-10 hidden md:block"></div>
-            <div className="absolute -top-8 -left-8 w-32 h-32 border border-gold -z-10 hidden md:block"></div>
-          </motion.div>
+            Behind the lens
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="font-serif text-white leading-none"
+            style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+          >
+            The Studio
+          </motion.h2>
+        </div>
+      </div>
 
-          <div className="lg:w-1/2">
-            <h2 className="text-4xl md:text-5xl font-serif text-dark mb-8">The Studio</h2>
-            <div className="space-y-6 text-dark/70 font-light text-lg mb-12">
-              <p>
-                Lumière Studio is a world-class photography and cinematography collective dedicated to documenting the most extraordinary celebrations across the globe.
-              </p>
-              <p>
-                Founded on the belief that every love story deserves to be told with cinematic grandeur, we blend editorial fashion aesthetics with raw, unscripted emotion. Our approach is unhurried, tactile, and profoundly intentional.
-              </p>
-              <p>
-                Whether it's an intimate ceremony on the Amalfi Coast or a grand celebration in a Rajasthani palace, we craft visual legacies for discerning clients who value artistry above all else.
-              </p>
-            </div>
+      {/* Content row */}
+      <div className="max-w-[1440px] mx-auto px-8 md:px-16 py-28 md:py-40">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20">
 
-            <div className="grid grid-cols-2 gap-8">
+          {/* Left — text */}
+          <div className="lg:col-span-5">
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-gold uppercase tracking-[0.35em] text-[10px] mb-8 font-light"
+            >
+              Est. 2016
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="space-y-7 text-dark/60 font-light text-[15px] leading-[2]"
+            >
+              <p>
+                Lumière Studio is a world-class photography and cinematography collective, built on the belief that every love story deserves to be told with cinematic grandeur and editorial precision.
+              </p>
+              <p>
+                We blend the quiet intimacy of documentary photography with the visual language of luxury fashion — creating images that are simultaneously beautiful and deeply felt.
+              </p>
+              <p>
+                Whether it's an intimate elopement on the Amalfi Coast or a grand palace celebration in Udaipur, we craft visual legacies for clients who value artistry above all else. Our studio takes on a carefully curated number of commissions each year.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="mt-12"
+            >
+              <a
+                href="#contact"
+                className="inline-flex items-center text-[11px] uppercase tracking-[0.2em] text-dark border-b border-dark/30 pb-1 hover:border-gold hover:text-gold transition-colors duration-400"
+              >
+                Inquire About Availability
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Right — stats */}
+          <div className="lg:col-span-7 flex flex-col justify-center">
+            <div className="grid grid-cols-2 gap-px bg-dark/8">
               {stats.map((stat, i) => (
-                <motion.div 
+                <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="border-l-2 border-gold pl-6"
+                  transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  className="bg-white p-10 md:p-14 group"
                 >
-                  <div className="text-4xl font-serif text-dark mb-2">{stat.value}</div>
-                  <div className="text-sm uppercase tracking-widest text-dark/50">{stat.label}</div>
+                  <div
+                    className="font-serif text-dark mb-3 leading-none"
+                    style={{ fontSize: "clamp(2.8rem, 5vw, 4.5rem)" }}
+                  >
+                    {stat.value}
+                  </div>
+                  <div className="w-6 h-px bg-gold mb-4 group-hover:w-10 transition-all duration-500" />
+                  <div className="text-[10px] uppercase tracking-[0.3em] text-dark/40 font-light">
+                    {stat.label}
+                  </div>
                 </motion.div>
               ))}
             </div>
           </div>
+
         </div>
       </div>
+
     </section>
   );
 }

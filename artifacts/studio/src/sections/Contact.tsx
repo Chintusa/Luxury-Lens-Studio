@@ -1,79 +1,218 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Mail, Phone, MapPin } from "lucide-react";
+
+const eventTypes = [
+  "Wedding Photography",
+  "Wedding Cinematography",
+  "Pre-Wedding Shoot",
+  "Destination Wedding",
+  "Corporate Event",
+  "Fashion Photography",
+];
+
+const budgetRanges = [
+  "Under $5,000",
+  "$5,000 – $10,000",
+  "$10,000 – $20,000",
+  "$20,000 – $35,000",
+  "$35,000+",
+  "Prefer not to say",
+];
+
+const inputClass =
+  "w-full border-b border-dark/15 py-4 bg-transparent focus:outline-none focus:border-gold transition-colors duration-300 text-dark placeholder:text-dark/25 font-light text-sm";
+const labelClass =
+  "block text-[9px] uppercase tracking-[0.3em] text-dark/45 mb-2 font-medium";
 
 export default function Contact() {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
-    <section id="contact" className="py-24 bg-cream">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="flex flex-col lg:flex-row gap-16">
-          <div className="lg:w-1/3">
-            <h2 className="text-4xl md:text-5xl font-serif text-dark mb-8">Begin Your Story</h2>
-            <p className="text-dark/70 font-light mb-12">
-              We take on a limited number of commissions each year to ensure the highest level of detail and attention for our clients. Please fill out the form to inquire about our availability.
+    <section id="contact" className="bg-cream py-40 md:py-52">
+      <div className="max-w-[1440px] mx-auto px-8 md:px-16">
+
+        {/* Header */}
+        <div className="mb-20 md:mb-28">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-gold uppercase tracking-[0.35em] text-[10px] mb-5 font-light"
+          >
+            Work With Us
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="font-serif text-dark leading-[0.95]"
+            style={{ fontSize: "clamp(2.8rem, 6vw, 6rem)" }}
+          >
+            Begin Your<br /><em>Story</em>
+          </motion.h2>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+
+          {/* Left info */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-4 space-y-12"
+          >
+            <p className="text-dark/55 font-light text-[15px] leading-[2]">
+              We accept a limited number of commissions each year to ensure every client receives our complete attention. Please share your story — we would love to hear about your plans.
             </p>
-            
-            <div className="space-y-6 text-sm tracking-widest uppercase">
+
+            <div className="space-y-8">
               <div>
-                <div className="text-dark/50 mb-1">Email</div>
-                <a href="mailto:inquiries@lumierestudio.com" className="text-dark hover:text-gold transition-colors">inquiries@lumierestudio.com</a>
-              </div>
-              <div>
-                <div className="text-dark/50 mb-1">Phone</div>
-                <a href="tel:+1234567890" className="text-dark hover:text-gold transition-colors">+1 (234) 567-890</a>
-              </div>
-              <div className="pt-6">
-                <a href="#" className="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 hover:bg-[#128C7E] transition-colors rounded-sm">
-                  <MessageCircle className="w-4 h-4" />
-                  WhatsApp Us
+                <div className={labelClass}>Email</div>
+                <a
+                  href="mailto:inquiries@lumierestudio.com"
+                  className="flex items-center gap-3 text-dark text-sm hover:text-gold transition-colors duration-300 group"
+                >
+                  <Mail className="w-4 h-4 text-gold/60" strokeWidth={1.5} />
+                  inquiries@lumierestudio.com
                 </a>
               </div>
-            </div>
-          </div>
-
-          <div className="lg:w-2/3 bg-white p-8 md:p-12 shadow-sm">
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-xs uppercase tracking-widest text-dark/60 mb-2">Name</label>
-                  <input type="text" className="w-full border-b border-dark/10 py-3 bg-transparent focus:outline-none focus:border-gold transition-colors" required />
-                </div>
-                <div>
-                  <label className="block text-xs uppercase tracking-widest text-dark/60 mb-2">Email</label>
-                  <input type="email" className="w-full border-b border-dark/10 py-3 bg-transparent focus:outline-none focus:border-gold transition-colors" required />
-                </div>
-                <div>
-                  <label className="block text-xs uppercase tracking-widest text-dark/60 mb-2">Phone</label>
-                  <input type="tel" className="w-full border-b border-dark/10 py-3 bg-transparent focus:outline-none focus:border-gold transition-colors" />
-                </div>
-                <div>
-                  <label className="block text-xs uppercase tracking-widest text-dark/60 mb-2">Event Date</label>
-                  <input type="date" className="w-full border-b border-dark/10 py-3 bg-transparent focus:outline-none focus:border-gold transition-colors" />
-                </div>
-                <div>
-                  <label className="block text-xs uppercase tracking-widest text-dark/60 mb-2">Event Type</label>
-                  <select className="w-full border-b border-dark/10 py-3 bg-transparent focus:outline-none focus:border-gold transition-colors appearance-none">
-                    <option value="">Select an option</option>
-                    <option value="wedding">Wedding</option>
-                    <option value="pre-wedding">Pre-Wedding</option>
-                    <option value="destination">Destination Wedding</option>
-                    <option value="corporate">Corporate</option>
-                    <option value="fashion">Fashion</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-xs uppercase tracking-widest text-dark/60 mb-2">Location</label>
-                  <input type="text" className="w-full border-b border-dark/10 py-3 bg-transparent focus:outline-none focus:border-gold transition-colors" />
-                </div>
+              <div>
+                <div className={labelClass}>Phone</div>
+                <a
+                  href="tel:+12345678900"
+                  className="flex items-center gap-3 text-dark text-sm hover:text-gold transition-colors duration-300"
+                >
+                  <Phone className="w-4 h-4 text-gold/60" strokeWidth={1.5} />
+                  +1 (234) 567-8900
+                </a>
               </div>
               <div>
-                <label className="block text-xs uppercase tracking-widest text-dark/60 mb-2">Message & Details</label>
-                <textarea rows={4} className="w-full border-b border-dark/10 py-3 bg-transparent focus:outline-none focus:border-gold transition-colors resize-none"></textarea>
+                <div className={labelClass}>Studios</div>
+                <div className="flex items-start gap-3 text-dark/55 text-sm font-light">
+                  <MapPin className="w-4 h-4 text-gold/60 mt-0.5 flex-shrink-0" strokeWidth={1.5} />
+                  Paris · Dubai · Mumbai · New York
+                </div>
               </div>
-              <button type="submit" className="bg-gold text-white px-10 py-4 uppercase tracking-widest text-sm hover:bg-dark transition-colors duration-300 w-full md:w-auto">
-                Submit Inquiry
-              </button>
-            </form>
-          </div>
+            </div>
+
+            <div className="pt-4">
+              <a
+                href="https://wa.me/12345678900"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-[#25D366] text-white px-7 py-4 text-[11px] uppercase tracking-[0.2em] hover:bg-[#1ebe5d] transition-colors duration-300"
+              >
+                <MessageCircle className="w-4 h-4" />
+                WhatsApp Us
+              </a>
+            </div>
+
+            {/* Small portrait image */}
+            <div className="hidden lg:block">
+              <div className="aspect-[4/3] overflow-hidden mt-4 img-hover-zoom">
+                <img
+                  src="https://images.unsplash.com/photo-1519225421-a9572-3a74?auto=format&fit=crop&q=80&w=600"
+                  alt="Studio"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src =
+                      "https://images.unsplash.com/photo-1583939411023?auto=format&fit=crop&q=80&w=600";
+                  }}
+                />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right form */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-8 bg-white p-10 md:p-16"
+          >
+            {submitted ? (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="h-full flex flex-col items-center justify-center text-center py-20"
+              >
+                <div className="w-12 h-px bg-gold mx-auto mb-8" />
+                <h3 className="font-serif text-dark text-3xl mb-4">Thank you</h3>
+                <p className="text-dark/50 font-light text-sm max-w-sm leading-relaxed">
+                  Your inquiry has been received. We will be in touch within 24 hours.
+                </p>
+              </motion.div>
+            ) : (
+              <form className="space-y-10" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div>
+                    <label className={labelClass}>Name *</label>
+                    <input type="text" placeholder="Your full name" className={inputClass} required />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Email *</label>
+                    <input type="email" placeholder="your@email.com" className={inputClass} required />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Phone</label>
+                    <input type="tel" placeholder="+1 (000) 000-0000" className={inputClass} />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Event Date</label>
+                    <input type="date" className={inputClass} />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Event Type *</label>
+                    <select className={`${inputClass} cursor-pointer`} required defaultValue="">
+                      <option value="" disabled>Select service</option>
+                      {eventTypes.map((t) => (
+                        <option key={t} value={t}>{t}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className={labelClass}>Location</label>
+                    <input type="text" placeholder="City, Country" className={inputClass} />
+                  </div>
+                  <div className="md:col-span-2">
+                    <label className={labelClass}>Budget Range</label>
+                    <select className={`${inputClass} cursor-pointer`} defaultValue="">
+                      <option value="" disabled>Select range</option>
+                      {budgetRanges.map((b) => (
+                        <option key={b} value={b}>{b}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="md:col-span-2">
+                    <label className={labelClass}>Your Story</label>
+                    <textarea
+                      rows={4}
+                      placeholder="Tell us about your vision, your venue, and what you are looking for…"
+                      className={`${inputClass} resize-none`}
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full md:w-auto bg-dark text-white px-14 py-5 uppercase tracking-[0.2em] text-[11px] hover:bg-gold transition-colors duration-500"
+                >
+                  Send Inquiry
+                </button>
+              </form>
+            )}
+          </motion.div>
+
         </div>
       </div>
     </section>

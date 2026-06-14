@@ -3,73 +3,124 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const testimonials = [
   {
-    quote: "They didn't just take photos; they directed a masterpiece. Looking at our wedding album feels like flipping through the pages of Vogue. Absolutely breathtaking.",
-    name: "Isabella & Thomas",
-    location: "Lake Como, Italy"
+    quote:
+      "They didn't just take photographs — they directed a masterpiece. Looking at our album feels like flipping through the pages of Vogue Italia. Breathtaking, and worth every penny.",
+    name: "Isabella & Thomas Remy",
+    location: "Lake Como, Italy",
+    event: "Villa Wedding · Summer 2024",
   },
   {
-    quote: "Flying the team out to Bali was the best decision we made. Their calm presence amidst the chaos and their eye for cinematic moments is unmatched in the industry.",
-    name: "Sarah & David",
-    location: "Uluwatu, Bali"
+    quote:
+      "Flying the team to Bali was the best decision we made. Their calm presence, their eye for light, and their ability to find the extraordinary in unscripted moments — simply unmatched.",
+    name: "Sarah & David Chen",
+    location: "Uluwatu, Bali",
+    event: "Clifftop Ceremony · Spring 2024",
   },
   {
-    quote: "A luxury experience from the first consultation to the final delivery. The film they created for our anniversary gala moved everyone to tears.",
+    quote:
+      "A luxury experience from the first email to final delivery. The film they produced for our anniversary gala reduced the entire room to silence. Pure art.",
     name: "The Vanguard Group",
-    location: "London, UK"
-  }
+    location: "London, United Kingdom",
+    event: "Corporate Gala · Winter 2023",
+  },
+  {
+    quote:
+      "We wanted images that felt like cinema. What we received surpassed even that. Our pre-wedding shoot in Paris belongs in a gallery, not just an album.",
+    name: "Priya & Nikhil Sharma",
+    location: "Paris, France",
+    event: "Pre-Wedding · Autumn 2024",
+  },
 ];
 
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
-    return () => clearInterval(timer);
+    const t = setInterval(() => setCurrent((p) => (p + 1) % testimonials.length), 7000);
+    return () => clearInterval(t);
   }, []);
 
   return (
-    <section className="py-32 bg-dark relative overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 relative z-10 text-center">
-        <h2 className="text-gold uppercase tracking-[0.3em] text-sm mb-16">What Couples Say</h2>
-        
-        <div className="max-w-4xl mx-auto h-64 relative">
+    <section className="py-40 md:py-56 bg-dark relative overflow-hidden">
+
+      {/* Decorative large quote mark */}
+      <div
+        className="absolute top-0 right-0 text-white/[0.025] font-serif leading-none select-none pointer-events-none"
+        style={{ fontSize: "clamp(12rem, 30vw, 28rem)" }}
+        aria-hidden
+      >
+        "
+      </div>
+
+      <div className="max-w-[1440px] mx-auto px-8 md:px-16 relative z-10">
+
+        {/* Header */}
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-gold uppercase tracking-[0.35em] text-[10px] mb-20 font-light"
+        >
+          Client Voices
+        </motion.p>
+
+        {/* Testimonial */}
+        <div className="max-w-4xl">
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.8 }}
-              className="absolute inset-0 flex flex-col items-center"
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="text-gold text-6xl font-serif leading-none mb-6">"</div>
-              <p className="text-white md:text-2xl lg:text-3xl font-serif italic font-light mb-8 leading-relaxed">
-                {testimonials[current].quote}
-              </p>
-              <div className="flex gap-1 text-gold mb-4">
+              <blockquote
+                className="font-serif text-white leading-[1.4] mb-12 italic font-light"
+                style={{ fontSize: "clamp(1.4rem, 3.5vw, 2.8rem)" }}
+              >
+                "{testimonials[current].quote}"
+              </blockquote>
+
+              <div className="flex gap-1 mb-6">
                 {[...Array(5)].map((_, i) => (
-                  <span key={i}>★</span>
+                  <span key={i} className="text-gold text-sm">★</span>
                 ))}
               </div>
-              <div className="uppercase tracking-widest text-sm text-white/60">
-                <span className="text-white font-medium">{testimonials[current].name}</span> — {testimonials[current].location}
+
+              <div>
+                <p className="text-white font-light text-sm tracking-wider mb-1">
+                  {testimonials[current].name}
+                </p>
+                <p className="text-white/30 uppercase tracking-[0.25em] text-[10px]">
+                  {testimonials[current].location} &nbsp;·&nbsp; {testimonials[current].event}
+                </p>
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
 
-        <div className="flex justify-center gap-3 mt-12">
-          {testimonials.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${i === current ? "bg-gold w-8" : "bg-white/20"}`}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
+        {/* Navigation */}
+        <div className="flex items-center gap-8 mt-20">
+          <div className="flex gap-3">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`transition-all duration-400 ${
+                  i === current
+                    ? "w-8 h-px bg-gold"
+                    : "w-4 h-px bg-white/20 hover:bg-white/40"
+                }`}
+                aria-label={`Go to testimonial ${i + 1}`}
+              />
+            ))}
+          </div>
+          <span className="text-white/20 text-[10px] uppercase tracking-widest">
+            {String(current + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
+          </span>
         </div>
+
       </div>
     </section>
   );
