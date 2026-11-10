@@ -14,18 +14,18 @@ export default function About() {
   const imgY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
-    <section id="about" className="bg-white overflow-hidden">
+    <section id="about" className="bg-dark overflow-hidden">
 
       {/* Top full-bleed image strip */}
       <div ref={ref} className="relative w-full h-[70vh] md:h-[85vh] overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: imgY }}>
           <img
-            src="https://images.unsplash.com/photo-1554048612-b6a92233f208?auto=format&fit=crop&q=90&w=2400&h=1600"
+            src="https://images.unsplash.com/photo-1554080353-a576cf803bda?auto=format&fit=crop&q=90&w=2400&h=1600"
             alt="Behind the scenes at Lumière Studio"
             className="w-full h-[110%] object-cover object-center"
             onError={(e) => {
               (e.target as HTMLImageElement).src =
-                "https://images.unsplash.com/photo-1519225421-a9572-3a74?auto=format&fit=crop&q=90&w=2400";
+                "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&q=90&w=2400";
             }}
           />
           <div
@@ -81,7 +81,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="space-y-7 text-dark/60 font-light text-[15px] leading-[2]"
+              className="space-y-7 text-white/70 font-light text-[15px] leading-[2]"
             >
               <p>
                 Lumière Studio is a world-class photography and cinematography collective, built on the belief that every love story deserves to be told with cinematic grandeur and editorial precision.
@@ -103,7 +103,7 @@ export default function About() {
             >
               <a
                 href="#contact"
-                className="inline-flex items-center text-[11px] uppercase tracking-[0.2em] text-dark border-b border-dark/30 pb-1 hover:border-gold hover:text-gold transition-colors duration-400"
+                className="inline-flex items-center text-[11px] uppercase tracking-[0.2em] text-white border-b border-white/30 pb-1 hover:border-gold hover:text-gold transition-colors duration-400"
               >
                 Inquire About Availability
               </a>
@@ -112,7 +112,7 @@ export default function About() {
 
           {/* Right — stats */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            <div className="grid grid-cols-2 gap-px bg-dark/8">
+            <div className="grid grid-cols-2 gap-px bg-white/10">
               {stats.map((stat, i) => (
                 <motion.div
                   key={i}
@@ -120,16 +120,16 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                  className="bg-white p-10 md:p-14 group"
+                  className="bg-[#0E0E0E] p-10 md:p-14 group border border-white/5"
                 >
                   <div
-                    className="font-serif text-dark mb-3 leading-none"
+                    className="font-serif text-white mb-3 leading-none"
                     style={{ fontSize: "clamp(2.8rem, 5vw, 4.5rem)" }}
                   >
                     {stat.value}
                   </div>
                   <div className="w-6 h-px bg-gold mb-4 group-hover:w-10 transition-all duration-500" />
-                  <div className="text-[10px] uppercase tracking-[0.3em] text-dark/40 font-light">
+                  <div className="text-[10px] uppercase tracking-[0.3em] text-white/50 font-light">
                     {stat.label}
                   </div>
                 </motion.div>

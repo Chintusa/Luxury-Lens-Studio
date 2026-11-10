@@ -62,7 +62,7 @@ export default function Navigation() {
           <div className="flex items-center gap-6">
             <a
               href="#contact"
-              className="hidden lg:inline-flex items-center text-[11px] uppercase tracking-[0.2em] text-dark bg-gold px-6 py-2.5 hover:bg-white transition-colors duration-300"
+              className="hidden lg:inline-flex items-center text-[11px] uppercase tracking-[0.2em] text-dark bg-gold px-6 py-2.5 hover:bg-gold-light transition-all duration-300 font-medium"
             >
               Book Now
             </a>

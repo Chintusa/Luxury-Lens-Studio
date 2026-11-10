@@ -21,7 +21,7 @@
 
   --color-gold: #C8A97E;
   --color-gold-light: #DFC9A8;
-  --color-cream: #F5F3EE;
+  --color-cream: #121212;
   --color-dark: #0A0A0A;
 
   --font-sans: 'Inter', sans-serif;
@@ -34,15 +34,15 @@
 }
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 0 0% 4%;
-  --border: 0 0% 90%;
-  --input: 0 0% 90%;
+  --background: 0 0% 4%;
+  --foreground: 0 0% 98%;
+  --border: 0 0% 16%;
+  --input: 0 0% 16%;
   --ring: 35 41% 64%;
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 4%;
+  --card: 0 0% 7%;
+  --card-foreground: 0 0% 98%;
   --primary: 35 41% 64%;
-  --primary-foreground: 0 0% 100%;
+  --primary-foreground: 0 0% 4%;
   --radius: 0rem;
 }
 
@@ -54,7 +54,7 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply font-sans antialiased bg-white text-foreground;
+    @apply font-sans antialiased bg-dark text-white;
     overflow-x: hidden;
   }
   h1, h2, h3, h4, h5, h6 {
@@ -139,7 +139,7 @@
     width: 4px;
   }
   ::-webkit-scrollbar-track {
-    background: #F5F3EE;
+    background: #0A0A0A;
   }
   ::-webkit-scrollbar-thumb {
     background: #C8A97E;

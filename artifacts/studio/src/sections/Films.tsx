@@ -4,8 +4,8 @@ import { Play, X } from "lucide-react";
 
 const films = [
   {
-    photo: "photo-1606216840-e34c-4ade",
-    fallback: "photo-1519225421-a9572-3a74",
+    photo: "photo-1520242739010-44e95bde329e",
+    fallback: "photo-1506744038136-46273834b3fb",
     title: "A Tuscan Dream",
     location: "Florence & Como, Italy",
     duration: "12:48",
@@ -13,8 +13,8 @@ const films = [
     featured: true,
   },
   {
-    photo: "photo-1524492412937-b28074d582d1",
-    fallback: "photo-1537633552985-df8429e8048b",
+    photo: "photo-1548013146-72479768bada",
+    fallback: "photo-1587474260584-136574528ed5",
     title: "The Royal Affair",
     location: "Udaipur, India",
     duration: "18:22",
@@ -83,11 +83,11 @@ export default function Films() {
           onClick={() => setPlaying(0)}
         >
           <img
-            src={`https://images.unsplash.com/photo-1606216840-e34c-4ade?auto=format&fit=crop&q=90&w=2400&h=1200`}
+            src={`https://images.unsplash.com/${films[0].photo}?auto=format&fit=crop&q=90&w=2400&h=1200`}
             alt={films[0].title}
             className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-[1.04]"
             onError={(e) => {
-              (e.target as HTMLImageElement).src = `https://images.unsplash.com/photo-1519225421-a9572-3a74?auto=format&fit=crop&q=90&w=2400`;
+              (e.target as HTMLImageElement).src = `https://images.unsplash.com/${films[0].fallback}?auto=format&fit=crop&q=90&w=2400`;
             }}
           />
           <div className="absolute inset-0 bg-dark/40 group-hover:bg-dark/30 transition-colors duration-700" />
@@ -174,11 +174,25 @@ export default function Films() {
             >
               <X className="w-7 h-7" />
             </button>
-            <div className="w-full max-w-4xl">
-              <div className="aspect-video bg-white/5 flex flex-col items-center justify-center border border-white/10">
-                <Play className="w-16 h-16 text-gold/40 mb-4" />
-                <p className="text-white/30 text-sm uppercase tracking-widest">Film Preview</p>
-                <p className="text-white/20 text-xs mt-2">{films[playing]?.title}</p>
+            <div className="w-full max-w-4xl relative aspect-video overflow-hidden border border-gold/30 shadow-2xl bg-black">
+              <img
+                src={`https://images.unsplash.com/${films[playing]?.photo}?auto=format&fit=crop&q=95&w=1600`}
+                alt={films[playing]?.title}
+                className="w-full h-full object-cover opacity-70"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent flex flex-col items-center justify-center text-center p-8">
+                <div className="w-20 h-20 rounded-full border border-gold/60 bg-gold/10 backdrop-blur-sm flex items-center justify-center mb-5">
+                  <Play className="w-8 h-8 text-gold ml-1" fill="currentColor" />
+                </div>
+                <p className="text-gold uppercase tracking-[0.3em] text-[10px] mb-2 font-light">
+                  {films[playing]?.location} · {films[playing]?.year}
+                </p>
+                <h3 className="font-serif text-white text-3xl md:text-5xl mb-3">
+                  {films[playing]?.title}
+                </h3>
+                <span className="text-white/40 text-xs tracking-widest font-light">
+                  {films[playing]?.duration} · 4K Master Edition
+                </span>
               </div>
             </div>
           </motion.div>

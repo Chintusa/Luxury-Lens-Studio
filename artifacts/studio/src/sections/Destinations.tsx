@@ -6,26 +6,26 @@ const destinations = [
   {
     name: "India",
     subtitle: "Rajasthan Palaces",
-    photo: "photo-1524492412937-b28074d582d1",
-    fallback: "photo-1537996194471-e657df975ab4",
+    photo: "photo-1548013146-72479768bada",
+    fallback: "photo-1587474260584-136574528ed5",
   },
   {
     name: "Dubai",
     subtitle: "Desert Luxury",
     photo: "photo-1512453979798-5ea266f8880c",
-    fallback: "photo-1519225421-a9572-3a74",
+    fallback: "photo-1519741497674-611481863552",
   },
   {
     name: "Bali",
     subtitle: "Temple & Jungle",
     photo: "photo-1537996194471-e657df975ab4",
-    fallback: "photo-1552465011-b4e21cd65ab1",
+    fallback: "photo-1506665531195-3566af2b4dfa",
   },
   {
     name: "Thailand",
     subtitle: "Golden Shores",
-    photo: "photo-1552465011-b4e21cd65ab1",
-    fallback: "photo-1499856871958-5b9627545d1a",
+    photo: "photo-1506665531195-3566af2b4dfa",
+    fallback: "photo-1537996194471-e657df975ab4",
   },
   {
     name: "Singapore",
@@ -57,7 +57,7 @@ export default function Destinations() {
   };
 
   return (
-    <section id="destinations" className="py-40 md:py-52 bg-cream overflow-hidden">
+    <section id="destinations" className="py-40 md:py-52 bg-dark overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-8 md:px-16">
 
         {/* Header */}
@@ -77,7 +77,7 @@ export default function Destinations() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="font-serif text-dark leading-[0.95]"
+              className="font-serif text-white leading-[0.95]"
               style={{ fontSize: "clamp(2.8rem, 6vw, 6rem)" }}
             >
               Destination<br /><em>Weddings</em>
@@ -86,14 +86,14 @@ export default function Destinations() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => scroll("left")}
-              className="w-12 h-12 border border-dark/20 flex items-center justify-center text-dark/50 hover:border-dark hover:text-dark transition-all duration-300 hover:bg-dark hover:text-white"
+              className="w-12 h-12 border border-white/20 flex items-center justify-center text-white/50 hover:border-gold hover:text-gold hover:bg-gold/10 transition-all duration-300"
               aria-label="Scroll left"
             >
               <ArrowLeft className="w-4 h-4" />
             </button>
             <button
               onClick={() => scroll("right")}
-              className="w-12 h-12 border border-dark/20 flex items-center justify-center text-dark/50 hover:border-dark hover:text-dark transition-all duration-300 hover:bg-dark hover:text-white"
+              className="w-12 h-12 border border-white/20 flex items-center justify-center text-white/50 hover:border-gold hover:text-gold hover:bg-gold/10 transition-all duration-300"
               aria-label="Scroll right"
             >
               <ArrowRight className="w-4 h-4" />

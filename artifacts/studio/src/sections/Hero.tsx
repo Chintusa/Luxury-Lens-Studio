@@ -16,12 +16,12 @@ export default function Hero() {
         style={{ y: imgY }}
       >
         <img
-          src="https://images.unsplash.com/photo-1519225421-a9572-3a74?auto=format&fit=crop&q=90&w=2400"
+          src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=90&w=2400"
           alt="Luxury wedding photography"
           className="w-full h-[115%] object-cover object-center"
           onError={(e) => {
             (e.target as HTMLImageElement).src =
-              "https://images.unsplash.com/photo-1606216840-e34c-4ade?auto=format&fit=crop&q=90&w=2400";
+              "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&q=90&w=2400";
           }}
         />
         <div
@@ -92,7 +92,7 @@ export default function Hero() {
         >
           <a
             href="#portfolio"
-            className="inline-flex items-center justify-center bg-gold text-dark px-10 py-4 uppercase tracking-[0.2em] text-[11px] hover:bg-white transition-colors duration-500 w-fit"
+            className="inline-flex items-center justify-center bg-gold text-dark font-medium px-10 py-4 uppercase tracking-[0.2em] text-[11px] hover:bg-gold-light transition-all duration-400 w-fit"
           >
             View Portfolio
           </a>

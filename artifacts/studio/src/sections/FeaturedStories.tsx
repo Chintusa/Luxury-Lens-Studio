@@ -3,16 +3,16 @@ import { ArrowUpRight } from "lucide-react";
 
 const stories = [
   {
-    photo: "photo-1519225421-a9572-3a74",
-    fallback: "photo-1583939411023-14783179e581",
+    photo: "photo-1583939003579-730e3918a45a",
+    fallback: "photo-1548013146-72479768bada",
     name: "Priya & Arjun",
     location: "Udaipur, India",
     type: "Destination Wedding",
     aspect: "aspect-[4/5]",
   },
   {
-    photo: "photo-1606216840-e34c-4ade",
-    fallback: "photo-1525758358edd-eba5e3a4e6b5",
+    photo: "photo-1520242739010-44e95bde329e",
+    fallback: "photo-1520854221256-17451cc331bf",
     name: "Sofia & Marco",
     location: "Lake Como, Italy",
     type: "Wedding Ceremony",
@@ -28,15 +28,15 @@ const stories = [
   },
   {
     photo: "photo-1464699908537-0954e50791ee",
-    fallback: "photo-1529636443475-c7c19b898cf5",
+    fallback: "photo-1512453979798-5ea266f8880c",
     name: "Aisha & Rahul",
     location: "Dubai, UAE",
     type: "Luxury Wedding",
     aspect: "aspect-[3/4]",
   },
   {
-    photo: "photo-1491809842219-3b69f4a1d4cb",
-    fallback: "photo-1500313830540-7b6650e1c013",
+    photo: "photo-1522673607200-164d1b6ce486",
+    fallback: "photo-1537996194471-e657df975ab4",
     name: "Mei & Thomas",
     location: "Bali, Indonesia",
     type: "Destination Wedding",
@@ -44,7 +44,7 @@ const stories = [
   },
   {
     photo: "photo-1519741497674-611481863552",
-    fallback: "photo-1537633552985-df8429e8048b",
+    fallback: "photo-1499856871958-5b9627545d1a",
     name: "Claire & Antoine",
     location: "Paris, France",
     type: "Elopement",
@@ -57,13 +57,13 @@ const fadeUp = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.9, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.9, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   }),
 };
 
 export default function FeaturedStories() {
   return (
-    <section id="work" className="py-40 md:py-52 bg-white">
+    <section id="work" className="py-40 md:py-52 bg-dark">
       <div className="max-w-[1440px] mx-auto px-8 md:px-16">
 
         {/* Header */}
@@ -83,7 +83,7 @@ export default function FeaturedStories() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="font-serif text-dark leading-[0.95]"
+              className="font-serif text-white leading-[0.95]"
               style={{ fontSize: "clamp(2.8rem, 6vw, 6rem)" }}
             >
               Featured<br /><em>Stories</em>
@@ -94,7 +94,7 @@ export default function FeaturedStories() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-dark/50 font-light text-base max-w-xs leading-relaxed"
+            className="text-white/60 font-light text-base max-w-xs leading-relaxed"
           >
             Each story is an original — intimately crafted, exquisitely told.
           </motion.p>
@@ -114,11 +114,11 @@ export default function FeaturedStories() {
           >
             <div className="aspect-[3/2] md:aspect-auto md:h-[680px] w-full overflow-hidden">
               <img
-                src={`https://images.unsplash.com/photo-1519225421-a9572-3a74?auto=format&fit=crop&q=85&w=1600&h=1000`}
+                src={`https://images.unsplash.com/${stories[0].photo}?auto=format&fit=crop&q=85&w=1600&h=1000`}
                 alt={stories[0].name}
                 className="w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.06]"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = `https://images.unsplash.com/photo-1583939411023?auto=format&fit=crop&q=85&w=1600`;
+                  (e.target as HTMLImageElement).src = `https://images.unsplash.com/${stories[0].fallback}?auto=format&fit=crop&q=85&w=1600`;
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/10 to-transparent transition-opacity duration-700" />
@@ -139,11 +139,11 @@ export default function FeaturedStories() {
           >
             <div className="aspect-[4/3] md:aspect-auto md:h-[680px] w-full overflow-hidden">
               <img
-                src={`https://images.unsplash.com/photo-1520242739010-44e95bde329e?auto=format&fit=crop&q=85&w=1000&h=1360`}
+                src={`https://images.unsplash.com/${stories[1].photo}?auto=format&fit=crop&q=85&w=1000&h=1360`}
                 alt={stories[1].name}
                 className="w-full h-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.06]"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = `https://images.unsplash.com/photo-1525758358edd-eba5e3a4e6b5?auto=format&fit=crop&q=85&w=1000`;
+                  (e.target as HTMLImageElement).src = `https://images.unsplash.com/${stories[1].fallback}?auto=format&fit=crop&q=85&w=1000`;
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/10 to-transparent transition-opacity duration-700" />
@@ -192,11 +192,11 @@ export default function FeaturedStories() {
           >
             <div className="aspect-[16/7] w-full overflow-hidden">
               <img
-                src={`https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=85&w=2400&h=1050`}
+                src={`https://images.unsplash.com/${stories[5].photo}?auto=format&fit=crop&q=85&w=2400&h=1050`}
                 alt={stories[5].name}
                 className="w-full h-full object-cover object-center transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = `https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&q=85&w=2400`;
+                  (e.target as HTMLImageElement).src = `https://images.unsplash.com/${stories[5].fallback}?auto=format&fit=crop&q=85&w=2400`;
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-dark/70 via-dark/20 to-transparent" />

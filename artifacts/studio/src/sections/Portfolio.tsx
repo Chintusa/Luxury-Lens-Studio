@@ -3,18 +3,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 const photos = [
-  { id: "photo-1519225421-a9572-3a74", h: "tall", fallback: "photo-1583939411023" },
-  { id: "photo-1464699908537-0954e50791ee", h: "short", fallback: "photo-1529636443475" },
-  { id: "photo-1520242739010-44e95bde329e", h: "medium", fallback: "photo-1525758358edd-eba5e3a4e6b5" },
-  { id: "photo-1606216840-e34c-4ade", h: "tall", fallback: "photo-1519225421-a9572-3a74" },
+  { id: "photo-1519741497674-611481863552", h: "tall", fallback: "photo-1583939003579-730e3918a45a" },
+  { id: "photo-1464699908537-0954e50791ee", h: "short", fallback: "photo-1469371670807-013ccf25f16a" },
+  { id: "photo-1520242739010-44e95bde329e", h: "medium", fallback: "photo-1520854221256-17451cc331bf" },
+  { id: "photo-1583939003579-730e3918a45a", h: "tall", fallback: "photo-1469371670807-013ccf25f16a" },
   { id: "photo-1499856871958-5b9627545d1a", h: "short", fallback: "photo-1537633552985-df8429e8048b" },
   { id: "photo-1537633552985-df8429e8048b", h: "medium", fallback: "photo-1511285560929-80b456fea0bc" },
-  { id: "photo-1524492412937-b28074d582d1", h: "tall", fallback: "photo-1537996194471-e657df975ab4" },
-  { id: "photo-1491809842219-3b69f4a1d4cb", h: "short", fallback: "photo-1500313830540-7b6650e1c013" },
-  { id: "photo-1519741497674-611481863552", h: "medium", fallback: "photo-1529636443475" },
+  { id: "photo-1548013146-72479768bada", h: "tall", fallback: "photo-1587474260584-136574528ed5" },
+  { id: "photo-1522673607200-164d1b6ce486", h: "short", fallback: "photo-1591604466107-ec97de577aff" },
+  { id: "photo-1469371670807-013ccf25f16a", h: "medium", fallback: "photo-1583939003579-730e3918a45a" },
   { id: "photo-1511285560929-80b456fea0bc", h: "tall", fallback: "photo-1464699908537-0954e50791ee" },
-  { id: "photo-1512453979798-5ea266f8880c", h: "short", fallback: "photo-1537633552985-df8429e8048b" },
-  { id: "photo-1552465011-b4e21cd65ab1", h: "medium", fallback: "photo-1499856871958-5b9627545d1a" },
+  { id: "photo-1512453979798-5ea266f8880c", h: "short", fallback: "photo-1525625293386-3f8f99389edd" },
+  { id: "photo-1606800052052-a08af7148866", h: "medium", fallback: "photo-1515934751635-c81c6bc9a2d8" },
 ];
 
 const heightMap = {
@@ -35,7 +35,7 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <section id="portfolio" className="py-40 md:py-52 bg-white">
+    <section id="portfolio" className="py-40 md:py-52 bg-dark">
       <div className="max-w-[1440px] mx-auto px-8 md:px-16">
 
         {/* Header */}
@@ -55,7 +55,7 @@ export default function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="font-serif text-dark leading-[0.95]"
+              className="font-serif text-white leading-[0.95]"
               style={{ fontSize: "clamp(2.8rem, 6vw, 6rem)" }}
             >
               Portfolio
@@ -66,7 +66,7 @@ export default function Portfolio() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-dark/40 font-light text-sm max-w-xs leading-relaxed"
+            className="text-white/60 font-light text-sm max-w-xs leading-relaxed"
           >
             A curated selection across all disciplines. Click any image to view full size.
           </motion.p>
@@ -111,7 +111,7 @@ export default function Portfolio() {
         >
           <a
             href="#contact"
-            className="inline-flex items-center gap-3 border border-dark/20 text-dark/60 hover:border-gold hover:text-gold px-10 py-4 text-[11px] uppercase tracking-[0.25em] transition-all duration-400"
+            className="inline-flex items-center gap-3 border border-white/20 text-white/70 hover:border-gold hover:text-gold hover:bg-gold/5 px-10 py-4 text-[11px] uppercase tracking-[0.25em] transition-all duration-400"
           >
             Commission a Shoot
           </a>
