@@ -73,3 +73,4 @@ Production artifacts are generated in `artifacts/studio/dist/public`.
 
 ## 📄 License
 MIT License. © 2026 Luxury Lens Studio.
+
